@@ -3,6 +3,7 @@ package com.ps_ovsyanka.googlesearchapp
 import android.app.Application
 import com.ps_ovsyanka.googlesearchapp.ui.di.DaggerIApplicationComponent
 import com.ps_ovsyanka.googlesearchapp.ui.di.IApplicationComponent
+import com.ps_ovsyanka.googlesearchapp.ui.di.modules.ContextModule
 
 class App: Application() {
 
@@ -14,6 +15,7 @@ class App: Application() {
         super.onCreate()
         appComponent = DaggerIApplicationComponent
             .builder()
+            .contextModule(ContextModule(this))
             .build()
     }
 

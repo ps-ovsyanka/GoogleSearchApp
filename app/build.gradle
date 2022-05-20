@@ -5,9 +5,13 @@ plugins {
     id 'kotlin-android-extensions'
 }
 
+ext {
+    roomVersion = '2.3.0'
+    dagger_version = '2.17'
+}
+
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.ps_ovsyanka.googlesearchapp"
@@ -50,6 +54,19 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     //dagger
-    kapt "com.google.dagger:dagger-compiler:2.17"
-    implementation "com.google.dagger:dagger:2.17"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+
+    implementation 'com.bluelinelabs:conductor:3.1.4'
+
+    //conductor
+    implementation 'com.bluelinelabs:conductor-androidx-transition:3.1.4'
+    implementation 'com.bluelinelabs:conductor-viewpager:3.1.4'
+    implementation 'com.bluelinelabs:conductor-viewpager2:3.1.4'
+    implementation 'com.bluelinelabs:conductor-autodispose:3.1.4'
+    implementation 'com.bluelinelabs:conductor-archlifecycle:3.1.4'
+    //room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
 }

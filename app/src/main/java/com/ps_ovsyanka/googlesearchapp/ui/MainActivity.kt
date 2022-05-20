@@ -1,20 +1,22 @@
 package com.ps_ovsyanka.googlesearchapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.bluelinelabs.conductor.Conductor.attachRouter
+import com.bluelinelabs.conductor.Router
+import com.bluelinelabs.conductor.RouterTransaction
 import com.ps_ovsyanka.googlesearchapp.App
 import com.ps_ovsyanka.googlesearchapp.R
-import com.ps_ovsyanka.googlesearchapp.data.Item
-import com.ps_ovsyanka.googlesearchapp.ui.adapter.ResponseAdapter
+import com.ps_ovsyanka.googlesearchapp.ui.controllers.homeScreen.HomeScreen
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
+
 
 class MainActivity : AppCompatActivity(), IMainActivityView {
 
     @Inject
     lateinit var presenter: MainActivityPresenter
-    val adapter = ResponseAdapter()
+    private lateinit var router: Router
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +24,11 @@ class MainActivity : AppCompatActivity(), IMainActivityView {
         App.appComponent.inject(this)
         presenter.onCreate(this)
 
-        responseList.adapter = adapter
-        buttonSearch.setOnClickListener(View.OnClickListener {
-            presenter.search(inputSearchText.text.toString())
-        })
+
+        router = attachRouter(this, container, savedInstanceState)
+        if (!router.hasRootController()) {
+            router.setRoot(RouterTransaction.with(HomeScreen()))
+        }
     }
 
-    override fun updateList(items: List<Item?>) {
-        adapter.refresh(items as List<Item>)
-    }
 }

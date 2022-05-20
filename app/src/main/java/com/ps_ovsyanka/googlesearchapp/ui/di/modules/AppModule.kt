@@ -1,6 +1,9 @@
 package com.ps_ovsyanka.googlesearchapp.ui.di.modules
 
+import com.ps_ovsyanka.googlesearchapp.domain.SavedQueryDao
 import com.ps_ovsyanka.googlesearchapp.ui.MainActivityPresenter
+import com.ps_ovsyanka.googlesearchapp.ui.controllers.homeScreen.HomeScreenPresenter
+import com.ps_ovsyanka.googlesearchapp.ui.controllers.search.SearchScreenPresenter
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -20,6 +23,15 @@ class AppModule {
         .build()
 
     @Provides
-    fun provideMainActivityPresenter(retrofit: Retrofit): MainActivityPresenter =
-        MainActivityPresenter(retrofit)
+    fun provideMainActivityPresenter(): MainActivityPresenter =
+        MainActivityPresenter()
+
+    @Provides
+    fun provideSearchScreenPresenter(retrofit: Retrofit, dao: SavedQueryDao): SearchScreenPresenter =
+        SearchScreenPresenter(retrofit, dao)
+
+    @Provides
+    fun provideHomeScreenPresenter(): HomeScreenPresenter =
+        HomeScreenPresenter()
+
 }
