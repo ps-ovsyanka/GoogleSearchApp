@@ -1,5 +1,8 @@
 package com.ps_ovsyanka.googlesearchapp.ui.controllers.search
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import com.ps_ovsyanka.googlesearchapp.data.Item
 import com.ps_ovsyanka.googlesearchapp.data.ResponseModel
 import com.ps_ovsyanka.googlesearchapp.data.SavedQuery
@@ -13,7 +16,8 @@ import java.util.*
 
 class SearchScreenPresenter(
     private val retrofit: Retrofit,
-    private val dao: SavedQueryDao
+    private val dao: SavedQueryDao,
+    private val context: Context
     ): Callback<ResponseModel> {
 
     companion object{
@@ -64,5 +68,10 @@ class SearchScreenPresenter(
         coroutineIO.launch {
             view.showSavedQueries(dao.getStringQuery())
         }
+    }
+
+    fun clickedLink(link: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link)).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(intent)
     }
 }

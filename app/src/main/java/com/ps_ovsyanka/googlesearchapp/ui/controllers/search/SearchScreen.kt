@@ -1,6 +1,7 @@
 package com.ps_ovsyanka.googlesearchapp.ui.controllers.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,14 +29,19 @@ class SearchScreen: Controller(), ISearchSreenView {
         container: ViewGroup,
         savedViewState: Bundle?
     ): View {
-        App.appComponent.inject(this)
         val view = inflater.inflate(R.layout.screen_search, container, false)
         view.apply {
             responseList.adapter = responseAdapter
             savedQueries.adapter = queriesAdapter
+
             queriesAdapter.listener =  {
                 inputSearchText.setText(it)
             }
+
+            responseAdapter.listener =  {
+                presenter.clickedLink(it)
+            }
+
             buttonSearch.setOnClickListener {
                 presenter.search(inputSearchText.text.toString())
             }
@@ -52,6 +58,8 @@ class SearchScreen: Controller(), ISearchSreenView {
         super.onAttach(view)
         App.appComponent.inject(this)
         presenter.onCreate(this)
+        Log.e("Splash", parentController.toString())
+
     }
 
     override fun updateList(items: List<Item?>) {

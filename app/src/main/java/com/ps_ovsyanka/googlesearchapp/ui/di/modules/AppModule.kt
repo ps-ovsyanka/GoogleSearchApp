@@ -1,5 +1,6 @@
 package com.ps_ovsyanka.googlesearchapp.ui.di.modules
 
+import android.content.Context
 import com.ps_ovsyanka.googlesearchapp.domain.SavedQueryDao
 import com.ps_ovsyanka.googlesearchapp.ui.MainActivityPresenter
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.homeScreen.HomeScreenPresenter
@@ -28,8 +29,8 @@ class AppModule {
         MainActivityPresenter()
 
     @Provides
-    fun provideSearchScreenPresenter(retrofit: Retrofit, dao: SavedQueryDao): SearchScreenPresenter =
-        SearchScreenPresenter(retrofit, dao)
+    fun provideSearchScreenPresenter(retrofit: Retrofit, dao: SavedQueryDao, context: Context): SearchScreenPresenter =
+        SearchScreenPresenter(retrofit, dao, context)
 
     @Provides
     fun provideHomeScreenPresenter(): HomeScreenPresenter =

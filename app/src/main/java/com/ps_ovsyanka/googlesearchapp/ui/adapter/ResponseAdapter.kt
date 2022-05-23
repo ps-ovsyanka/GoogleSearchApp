@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ps_ovsyanka.googlesearchapp.data.Item
-import kotlinx.android.synthetic.main.item_request.view.*
+import kotlinx.android.synthetic.main.item_responce.view.*
 
 class ResponseAdapter : RecyclerView.Adapter<ResponseAdapter.ViewHolder>() {
 
     private var values: MutableList<Item> = mutableListOf()
+    lateinit var listener: (String)->Unit
 
     fun refresh(list: List<Item>){
         values.clear()
@@ -26,7 +27,7 @@ class ResponseAdapter : RecyclerView.Adapter<ResponseAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_request, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_responce, parent, false)
         )
     }
 
@@ -43,6 +44,12 @@ class ResponseAdapter : RecyclerView.Adapter<ResponseAdapter.ViewHolder>() {
         val title: TextView = view.titleResponse
         val link: TextView = view.linkResponse
         val snippet: TextView = view.snippetResponse
+
+        init {
+            view.setOnClickListener {
+                listener(it.linkResponse.text.toString())
+            }
+        }
     }
 
 }
