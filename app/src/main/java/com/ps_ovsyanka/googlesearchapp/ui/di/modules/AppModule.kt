@@ -4,6 +4,7 @@ import com.ps_ovsyanka.googlesearchapp.domain.SavedQueryDao
 import com.ps_ovsyanka.googlesearchapp.ui.MainActivityPresenter
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.homeScreen.HomeScreenPresenter
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.search.SearchScreenPresenter
+import com.ps_ovsyanka.googlesearchapp.ui.controllers.splash.SplashScreenPresenter
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -33,5 +34,9 @@ class AppModule {
     @Provides
     fun provideHomeScreenPresenter(): HomeScreenPresenter =
         HomeScreenPresenter()
+
+    @Provides
+    fun provideSplashScreenPresenter(): SplashScreenPresenter =
+        SplashScreenPresenter()
 
 }
