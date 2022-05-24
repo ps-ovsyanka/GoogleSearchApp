@@ -2,6 +2,7 @@ package com.ps_ovsyanka.googlesearchapp.ui.di
 
 import com.ps_ovsyanka.googlesearchapp.ui.MainActivity
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.homeScreen.HomeScreen
+import com.ps_ovsyanka.googlesearchapp.ui.controllers.imageSearch.SearchImageScreen
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.search.SearchScreen
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.splash.SplashScreen
 import com.ps_ovsyanka.googlesearchapp.ui.di.modules.AppModule
@@ -14,6 +15,7 @@ import dagger.Component
 interface IApplicationComponent {
     fun inject(mainActivity: MainActivity?)
     fun inject(searchScreen: SearchScreen?)
+    fun inject(searchImageScreen: SearchImageScreen?)
     fun inject(homeScreen: HomeScreen?)
     fun inject(splashScreen: SplashScreen?)
 }

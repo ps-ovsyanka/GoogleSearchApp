@@ -1,4 +1,4 @@
-package com.ps_ovsyanka.googlesearchapp.ui.controllers.search
+package com.ps_ovsyanka.googlesearchapp.ui.controllers.imageSearch
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,17 +11,16 @@ import com.bluelinelabs.conductor.Controller
 import com.ps_ovsyanka.googlesearchapp.App
 import com.ps_ovsyanka.googlesearchapp.R
 import com.ps_ovsyanka.googlesearchapp.data.Item
-import com.ps_ovsyanka.googlesearchapp.ui.adapter.ResponseAdapter
 import com.ps_ovsyanka.googlesearchapp.ui.adapter.ResponseImageAdapter
 import com.ps_ovsyanka.googlesearchapp.ui.adapter.SavedQueriesAdapter
 import kotlinx.android.synthetic.main.screen_search.view.*
 import javax.inject.Inject
 
-class SearchScreen: Controller(), ISearchScreenView {
+class SearchImageScreen: Controller(), ISearchImageScreenView {
 
     @Inject
-    lateinit var presenter: SearchScreenPresenter
-    private val responseAdapter = ResponseAdapter()
+    lateinit var presenter: SearchImageScreenPresenter
+    private val responseImageAdapter = ResponseImageAdapter()
     private val queriesAdapter = SavedQueriesAdapter()
 
     override fun onCreateView(
@@ -31,14 +30,14 @@ class SearchScreen: Controller(), ISearchScreenView {
     ): View {
         val view = inflater.inflate(R.layout.screen_search, container, false)
         view.apply {
-            responseList.adapter = responseAdapter
+            responseList.adapter = responseImageAdapter
             savedQueries.adapter = queriesAdapter
 
             queriesAdapter.listener =  {
                 inputSearchText.setText(it)
             }
 
-            responseAdapter.listener =  {
+            responseImageAdapter.listener =  {
                 presenter.clickedLink(it)
             }
 
@@ -61,11 +60,11 @@ class SearchScreen: Controller(), ISearchScreenView {
     }
 
     override fun updateList(items: List<Item?>) {
-        responseAdapter.refresh(items as List<Item>)
+        responseImageAdapter.refresh(items as List<Item>)
     }
 
     override fun showLoader(){
-        responseAdapter.clear()
+        responseImageAdapter.clear()
         view?.messageView?.visibility = TextView.GONE
         view?.loader?.visibility = ProgressBar.VISIBLE
         view?.clearFocus()

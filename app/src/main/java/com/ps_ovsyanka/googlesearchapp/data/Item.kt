@@ -21,4 +21,6 @@ class Item {
     var htmlFormattedUrl: String? = null
 
     var cacheId: String? = null
+
+    var image: ResponseImage? = null
 }

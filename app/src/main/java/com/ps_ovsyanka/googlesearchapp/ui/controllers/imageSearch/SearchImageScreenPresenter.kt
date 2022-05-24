@@ -1,4 +1,4 @@
-package com.ps_ovsyanka.googlesearchapp.ui.controllers.search
+package com.ps_ovsyanka.googlesearchapp.ui.controllers.imageSearch
 
 import android.content.Context
 import android.content.Intent
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import retrofit2.*
 import java.util.*
 
-class SearchScreenPresenter(
+class SearchImageScreenPresenter(
     private val retrofit: Retrofit,
     private val dao: SavedQueryDao,
     private val context: Context
@@ -25,20 +25,15 @@ class SearchScreenPresenter(
         private const val CX = "8b8faaa29e4af41f0"
     }
 
-    private lateinit var view: ISearchScreenView
+    private lateinit var view: ISearchImageScreenView
     private val api = retrofit.create(IRetrofitServices::class.java)
     private val coroutineIO = CoroutineScope(Dispatchers.Main)
 
-    fun onCreate(mainView: SearchScreen){
+    fun onCreate(mainView: SearchImageScreen){
         view = mainView
     }
 
     fun search(query: String) {
-        view.showLoader()
-        api.getData(API_KEY, CX, query).enqueue(this)
-    }
-
-    fun searchImage(query: String) {
         view.showLoader()
         api.getData(API_KEY, CX, query, "image").enqueue(this)
     }

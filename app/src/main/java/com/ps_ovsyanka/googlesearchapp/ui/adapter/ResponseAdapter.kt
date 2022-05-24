@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ps_ovsyanka.googlesearchapp.data.Item
-import kotlinx.android.synthetic.main.item_responce.view.*
+import kotlinx.android.synthetic.main.item_response.view.*
 
 class ResponseAdapter : RecyclerView.Adapter<ResponseAdapter.ViewHolder>() {
 
@@ -27,7 +27,7 @@ class ResponseAdapter : RecyclerView.Adapter<ResponseAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_responce, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_response, parent, false)
         )
     }
 

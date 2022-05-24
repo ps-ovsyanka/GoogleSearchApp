@@ -2,7 +2,7 @@ package com.ps_ovsyanka.googlesearchapp.ui.controllers.search
 
 import com.ps_ovsyanka.googlesearchapp.data.Item
 
-interface ISearchSreenView {
+interface ISearchScreenView {
     fun updateList(items: List<Item?>)
     fun showLoader()
     fun hideLoader()

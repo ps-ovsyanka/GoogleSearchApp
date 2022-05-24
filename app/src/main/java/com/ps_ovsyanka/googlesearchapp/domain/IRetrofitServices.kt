@@ -14,4 +14,12 @@ interface IRetrofitServices {
         @Query("cx") cx: String?,
         @Query("q") query: String?
     ): Call<ResponseModel>
+
+    @GET("/customsearch/v1")
+    fun getData(
+        @Query("key") key: String?,
+        @Query("cx") cx: String?,
+        @Query("q") query: String?,
+        @Query("searchType") searchType: String?
+    ): Call<ResponseModel>
 }

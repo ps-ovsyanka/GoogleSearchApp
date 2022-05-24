@@ -8,6 +8,7 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.ps_ovsyanka.googlesearchapp.App
 import com.ps_ovsyanka.googlesearchapp.R
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.homeScreen.HomeScreen
+import com.ps_ovsyanka.googlesearchapp.ui.controllers.splash.SplashScreen
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -26,8 +27,20 @@ class MainActivity : AppCompatActivity(), IMainActivityView {
 
 
         router = attachRouter(this, container, savedInstanceState)
+            .setPopRootControllerMode(Router.PopRootControllerMode.POP_ROOT_CONTROLLER_BUT_NOT_VIEW)
         if (!router.hasRootController()) {
             router.setRoot(RouterTransaction.with(HomeScreen()))
+        }
+        router.pushController(RouterTransaction.with(SplashScreen()))
+    }
+
+    override fun toHome(){
+        router.popToRoot()
+    }
+
+    override fun onBackPressed() {
+        if (!router.handleBack()) {
+            super.onBackPressed()
         }
     }
 

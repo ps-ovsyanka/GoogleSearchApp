@@ -1,5 +1,6 @@
 package com.ps_ovsyanka.googlesearchapp.ui.controllers.splash
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.RouterTransaction
 import com.ps_ovsyanka.googlesearchapp.App
 import com.ps_ovsyanka.googlesearchapp.R
+import com.ps_ovsyanka.googlesearchapp.ui.MainActivity
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.search.SearchScreen
 import javax.inject.Inject
 
@@ -26,8 +28,10 @@ class SplashScreen: Controller(), ISplashScreenView {
         return  inflater.inflate(R.layout.screen_splash, container, false)
     }
 
-    override fun toRoot(){
-        parentController?.router?.popToRoot()
+    override fun endLoaded(){
+        if (activity is MainActivity){
+            (activity as MainActivity).toHome()
+        }
     }
 
     override fun onAttach(view: View) {

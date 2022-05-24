@@ -4,6 +4,7 @@ import android.content.Context
 import com.ps_ovsyanka.googlesearchapp.domain.SavedQueryDao
 import com.ps_ovsyanka.googlesearchapp.ui.MainActivityPresenter
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.homeScreen.HomeScreenPresenter
+import com.ps_ovsyanka.googlesearchapp.ui.controllers.imageSearch.SearchImageScreenPresenter
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.search.SearchScreenPresenter
 import com.ps_ovsyanka.googlesearchapp.ui.controllers.splash.SplashScreenPresenter
 import dagger.Module
@@ -31,6 +32,10 @@ class AppModule {
     @Provides
     fun provideSearchScreenPresenter(retrofit: Retrofit, dao: SavedQueryDao, context: Context): SearchScreenPresenter =
         SearchScreenPresenter(retrofit, dao, context)
+
+    @Provides
+    fun provideSearchImageScreenPresenter(retrofit: Retrofit, dao: SavedQueryDao, context: Context): SearchImageScreenPresenter =
+        SearchImageScreenPresenter(retrofit, dao, context)
 
     @Provides
     fun provideHomeScreenPresenter(): HomeScreenPresenter =
