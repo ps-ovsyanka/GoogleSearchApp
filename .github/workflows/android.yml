@@ -36,10 +36,10 @@ jobs:
     - name: Generate DOKKA
       run: ./gradlew dokkaHtml
 
-    - name: Archive DOKKA
-      uses: actions/upload-artifact@master
+    - name: Deploy API documentation to Github Pages
+      if: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request' }}
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        name: dev_dokka
-        path: ./app/build/dokka
-
-
+        branch: gh-pages
+        folder: build/dokka/html
+        target-folder: api
