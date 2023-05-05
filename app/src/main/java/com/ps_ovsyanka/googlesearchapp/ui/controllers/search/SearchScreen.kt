@@ -17,6 +17,12 @@ import com.ps_ovsyanka.googlesearchapp.ui.adapter.SavedQueriesAdapter
 import kotlinx.android.synthetic.main.screen_search.view.*
 import javax.inject.Inject
 
+/**
+ * My Doc
+ *
+ * @author Aleksandra Fogelgezang
+ */
+
 class SearchScreen: Controller(), ISearchScreenView {
 
     @Inject
@@ -24,6 +30,10 @@ class SearchScreen: Controller(), ISearchScreenView {
     private val responseAdapter = ResponseAdapter()
     private val queriesAdapter = SavedQueriesAdapter()
 
+
+    /**
+     * @return Search Screen View
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup,
@@ -60,10 +70,17 @@ class SearchScreen: Controller(), ISearchScreenView {
         presenter.onCreate(this)
     }
 
+    /**
+     * Update view search list
+    * @property items the search results.
+    */
     override fun updateList(items: List<Item?>) {
         responseAdapter.refresh(items as List<Item>)
     }
 
+    /**
+     * Shows a progress bar while getting results
+     */
     override fun showLoader(){
         responseAdapter.clear()
         view?.messageView?.visibility = TextView.GONE
