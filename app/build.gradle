@@ -27,8 +27,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-//        manifestPlaceholders = [auth0Domain: "@string/com_auth0_domain", auth0Scheme: "https"]
     }
 
     buildTypes {
@@ -79,5 +77,5 @@ dependencies {
     implementation "androidx.room:room-ktx:$roomVersion"
 
     //auth
-    implementation 'com.auth0.android:auth0:2.+'
+//    implementation 'com.auth0.android:auth0:2.+'
 }
