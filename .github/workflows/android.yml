@@ -26,10 +26,14 @@ jobs:
       run: ./gradlew build
     - name: trrr
       run: tree
-      
+
+    - name: bild
+      run: build APK
+
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
         name: dev_artifact
         path: ./app/build/outputs/apk/debug/
+
 

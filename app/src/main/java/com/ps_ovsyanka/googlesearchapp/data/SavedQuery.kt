@@ -10,5 +10,6 @@ class SavedQuery(
         var id : Long = 0,
         @field:TypeConverters(QueryTypeConverter::class)
         var query : String,
-        var date :String
+        var date :String,
+        var new: Boolean
         )
