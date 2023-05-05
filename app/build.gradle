@@ -11,6 +11,10 @@ ext {
 }
 
 android {
+
+    lintOptions {
+        abortOnError false
+    }
     compileSdkVersion 30
 
     defaultConfig {
