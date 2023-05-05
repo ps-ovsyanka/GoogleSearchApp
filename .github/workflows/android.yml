@@ -24,3 +24,12 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: trrr
+      run: tree
+      
+    - name: Archive Production Artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: dev_artifact
+        path: GoogleSearchApp/app/build/outputs/apk/debug/app-debug.apk
+
