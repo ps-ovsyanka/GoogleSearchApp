@@ -40,6 +40,6 @@ jobs:
       if: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request' }}
       uses: ps-ovsyanka/GoogleSearchApp@docs
       with:
-        branch: gh-pages
+        branch: docs
         folder: build/dokka/html
         target-folder: docs
