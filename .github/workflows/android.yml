@@ -34,6 +34,6 @@ jobs:
         path: ./app/build/outputs/apk/debug/
 
     - name: Generate DOKKA
-      run: ./gradlew dokkaHtml
+        run: ./gradlew dokkaHtml
 
 
