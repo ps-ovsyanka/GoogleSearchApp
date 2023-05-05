@@ -36,4 +36,10 @@ jobs:
     - name: Generate DOKKA
       run: ./gradlew dokkaHtml
 
+    - name: Archive DOKKA
+      uses: actions/upload-artifact@master
+      with:
+        name: dev_dokka
+        path: ./app/build/dokka
+
 
