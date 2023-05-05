@@ -27,9 +27,6 @@ jobs:
     - name: trrr
       run: tree
 
-    - name: bild
-      run: build APK
-
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
