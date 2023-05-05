@@ -41,4 +41,4 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: docs
-        folder: docs
+        folder: app/build/dokka/html
