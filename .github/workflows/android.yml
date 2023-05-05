@@ -38,7 +38,7 @@ jobs:
 
     - name: Deploy API documentation to Github Pages
       if: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request' }}
-      uses: ps-ovsyanka/GoogleSearchApp@docs
+      uses: ps-ovsyanka/GoogleSearchApp@releses
       with:
         branch: docs
         folder: build/dokka/html
