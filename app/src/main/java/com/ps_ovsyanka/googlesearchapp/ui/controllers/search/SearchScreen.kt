@@ -72,7 +72,7 @@ class SearchScreen: Controller(), ISearchScreenView {
 
     /**
      * Update view search list
-     * New coments
+     * New comments for test
     * @property items the search results.
     */
     override fun updateList(items: List<Item?>) {
